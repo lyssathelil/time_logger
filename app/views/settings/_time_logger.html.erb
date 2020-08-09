@@ -12,6 +12,10 @@
     <%= label_tag 'settings[redirect_to_new_time_entry]', l(:time_logger_settings_redirect_to_new_time_entry) %>
     <%= check_box_tag 'settings[redirect_to_new_time_entry]', @settings['redirect_to_new_time_entry'], @settings['redirect_to_new_time_entry'] %>
   </p>
+  <p>
+      <%= label_tag 'settings[show_pause]', l(:time_logger_show_pause) %>
+      <%= check_box_tag 'settings[show_pause]', 1, @settings['show_pause'] %>
+  </p>
 </div>
 
 <h3><%= l(:time_logger_settings_transition_title) %></h3>

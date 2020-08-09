@@ -28,6 +28,7 @@ pt-BR:
   time_logger_settings_new_transition_to: "para"
   time_logger_settings_new_transition_add: "Adicionar transição"
   time_logger_settings_unknown_status: "Estado desconhecido"
+  time_logger_show_pause: "Show pause option"
   time_logger_settings_zombie_transition: "transição de estado zombie"
   list_time_loggers: "listar"
   no_time_logger: "Sem time tracker"
@@ -41,5 +42,6 @@ pt-BR:
   time_logger_label_transition_journal: "Transição de status aplicada automaticamente devido ao início do time tracker."
   time_logger_label_your_time_loggers: "Seus time tracker"
   time_logger_label_other_time_loggers: "Time trackers de outros usuários"
+  time_logger_label_paused_time_loggers: "Other user's paused time trackers"
   time_logger_list_title: "Time trackers"
 

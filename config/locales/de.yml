@@ -25,6 +25,7 @@ de:
   time_logger_label_transition_journal: "Status wurde durch die Zeiterfassung automatisch geändert."
   time_logger_label_your_time_loggers: "Meine Zeiterfassungen"
   time_logger_label_other_time_loggers: "Zeiterfassungen anderer Benutzer"
+  time_logger_label_paused_time_loggers: "Other user's paused time trackers"
   time_logger_list_title: "Zeiterfassungen"
   time_logger_not_running: "Gestoppt"
   time_logger_refresh_rate: "Aktualisierungsrate"
@@ -41,5 +42,6 @@ de:
   time_logger_settings_transition_title: "Statusänderungen"
   time_logger_settings_unknown_status: "Unbekannter Status"
   time_logger_settings_zombie_transition: "Zombie Statusänderung"
+  time_logger_show_pause: "Show pause option"
   time_logger_zombie_legend: "Zombie Zeiterfassung"
 

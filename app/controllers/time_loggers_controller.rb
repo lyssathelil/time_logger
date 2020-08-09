@@ -3,11 +3,13 @@ class TimeLoggersController < ApplicationController
 
   def index
     if User.current.nil?
-      @user_time_loggers = nil
-      @time_loggers = TimeLogger.all
+        @user_time_loggers = nil
+        @time_loggers = TimeLogger.where(paused: 0)
+        @paused_time_loggers = TimeLogger.where(paused: 1)
     else
-      @user_time_loggers = TimeLogger.where(user_id: User.current.id)
-      @time_loggers = TimeLogger.where('user_id != ?', User.current.id)
+        @user_time_loggers = TimeLogger.where(user_id: User.current.id)
+        @time_loggers = TimeLogger.where('paused = 0 and user_id != ?', User.current.id)
+        @paused_time_loggers = TimeLogger.where('paused = 1 and user_id != ?', User.current.id)
     end
   end
 
@@ -45,18 +47,22 @@ class TimeLoggersController < ApplicationController
   end
 
   def suspend
-    @time_logger = current
-    if @time_logger.nil? || @time_logger.paused
-      flash[:error] = l(:no_time_logger_running)
-      redirect_to :back
+    if Setting.plugin_time_logger['show_pause']
+        @time_logger = current
+        if @time_logger.nil? or @time_logger.paused
+            flash[:error] = l(:no_time_logger_running)
+            redirect_to :back
+        else
+            @time_logger.time_spent = @time_logger.hours_spent
+            @time_logger.paused = true
+            if @time_logger.save
+                render_menu
+            else
+                flash[:error] = l(:suspend_time_logger_error)
+            end
+        end
     else
-      @time_logger.time_spent = @time_logger.hours_spent
-      @time_logger.paused = true
-      if @time_logger.save
-        render_menu
-      else
         flash[:error] = l(:suspend_time_logger_error)
-      end
     end
   end
 

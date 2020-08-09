@@ -23,6 +23,7 @@ cs:
   time_logger_label_transition_journal: "Přechod stavu je použit automaticky při spuštění sledování času u úkolu."
   time_logger_label_your_time_loggers: "Vaše sledování času"
   time_logger_label_other_time_loggers: "Sledování času ostatních uživatelů"
+  time_logger_label_paused_time_loggers: "Other user's paused time trackers"
   time_logger_list_title: "Sledování časus"
   time_logger_not_running: "Neběží"
   time_logger_refresh_rate: "Frekvence obnovení"
@@ -39,5 +40,6 @@ cs:
   time_logger_settings_transition_title: "Přechod stavu"
   time_logger_settings_unknown_status: "Neznámý stav"
   time_logger_settings_zombie_transition: "zombie přechod stavu"
+  time_logger_show_pause: "Show pause option"
   time_logger_zombie_legend: "zombie sledování času"
 
