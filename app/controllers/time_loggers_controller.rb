@@ -18,8 +18,10 @@ class TimeLoggersController < ApplicationController
     if @time_logger.nil?
       @issue = Issue.find_by_id(params[:issue_id])
       @time_logger = TimeLogger.new(issue_id: @issue.id)
+      @action_log = TimeLoggerAction.new({issue_id: @issue.id, action: 'start'})
 
       if @time_logger.save
+        @action_log.save
         apply_status_transition(@issue) unless Setting.plugin_time_logger['status_transitions'].nil?
         render_menu
       else
@@ -39,6 +41,8 @@ class TimeLoggersController < ApplicationController
       @time_logger.started_on = Time.now
       @time_logger.paused = false
       if @time_logger.save
+        @action_log = TimeLoggerAction.new({issue_id: @time_logger.issue_id, action: 'resume'})
+        @action_log.save
         render_menu
       else
         flash[:error] = l(:resume_time_logger_error)
@@ -56,6 +60,8 @@ class TimeLoggersController < ApplicationController
             @time_logger.time_spent = @time_logger.hours_spent
             @time_logger.paused = true
             if @time_logger.save
+                @action_log = TimeLoggerAction.new({issue_id: @issue.id, action: 'pause'})
+                @action_log.save
                 render_menu
             else
                 flash[:error] = l(:suspend_time_logger_error)
@@ -75,6 +81,8 @@ class TimeLoggersController < ApplicationController
       issue_id = @time_logger.issue_id
       hours = @time_logger.hours_spent.round(2)
       @time_logger.destroy
+      @action_log = TimeLoggerAction.new({issue_id: issue_id, action: 'stop'})
+      @action_log.save
 
       redirect_to_new_time_entry = Setting.plugin_time_logger['redirect_to_new_time_entry']
 
