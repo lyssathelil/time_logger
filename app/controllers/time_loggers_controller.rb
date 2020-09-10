@@ -60,7 +60,7 @@ class TimeLoggersController < ApplicationController
             @time_logger.time_spent = @time_logger.hours_spent
             @time_logger.paused = true
             if @time_logger.save
-                @action_log = TimeLoggerAction.new({issue_id: @issue.id, action: 'pause'})
+                @action_log = TimeLoggerAction.new({issue_id: @time_logger.issue_id, action: 'pause'})
                 @action_log.save
                 render_menu
             else
