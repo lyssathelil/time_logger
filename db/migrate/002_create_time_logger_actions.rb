@@ -1,4 +1,4 @@
-class CreateTimeLoggerActions < ActiveRecord::Migration[4.2]
+class CreateTimeLoggerActions < Rails.version < '5.1' ? ActiveRecord::Migration : ActiveRecord::Migration[4.2]
   def self.up
     create_table :time_logger_actions do |t|
       t.column :user_id, :integer
