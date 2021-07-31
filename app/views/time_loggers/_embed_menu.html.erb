@@ -23,16 +23,13 @@
                     {:controller => '/issues', :action => 'show', :id => time_logger.issue_id},
                     {:class => 'icon-action icon-clock'}
         %>
-         / <%= time_logger.time_spent_to_s %> /
-        <% if Setting.plugin_time_logger['show_pause'] %>
-            <%= link_to '',
-                { :controller => '/time_loggers', :action => 'suspend' },
-                :class => 'icon-action icon-pause-action',
-                :title => l(:suspend_time_logger),
-                :"data-replace" => '#time-logger-menu',
-                :remote => true
-            %>
-        <% end %>
+        <%= link_to '',
+                    {:controller => '/time_loggers', :action => 'suspend'},
+                    :class => 'icon-action icon-pause-action',
+                    :title => l(:suspend_time_logger),
+                    :"data-replace" => '#time-logger-menu',
+                    :remote => true
+        %>
         <%= link_to '',
                     {:controller => '/time_loggers', :action => 'stop'},
                     {:class => 'icon-action icon-stop-action', :title => l(:stop_time_logger)}
@@ -52,7 +49,6 @@
     <%# Display the "Not running" entry %>
     <span class='icon icon-time'><%= l(:time_logger_not_running) %>&nbsp;</span>
 <% end %>
-
 <% if User.current.allowed_to?(:log_time, nil, :global => true) or User.current.allowed_to?(:view_others_time_loggers, nil, :global => true) %>
     <span>
         <%= link_to '',
