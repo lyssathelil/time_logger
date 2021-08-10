@@ -89,7 +89,7 @@ class TimeLoggersController < ApplicationController
       if redirect_to_new_time_entry
         redirect_to controller: 'timelog',
                     protocol: Setting.protocol,
-                    action: 'new_realtime',
+                    action: 'new',
                     issue_id: issue_id,
                     time_entry: { hours: hours }
       else
