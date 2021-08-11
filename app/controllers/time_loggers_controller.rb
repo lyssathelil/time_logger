@@ -95,7 +95,7 @@ class TimeLoggersController < ApplicationController
       else
         redirect_to controller: 'issues',
                     protocol: Setting.protocol,
-                    action: 'edit',
+                    action: 'edit_realtime',
                     id: issue_id,
                     time_entry: { hours: hours }
       end
